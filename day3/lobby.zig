@@ -3,10 +3,11 @@ const std = @import("std");
 pub fn main() !void {
 
     const file = @embedFile("./input.txt");
-    var it = std.mem.tokenizeSequence(u8, file[0..], "\r\n");
+    var it = std.mem.tokenizeSequence(u8, file[0..], "\n");
     var result:u32 = 0;
 
     while (it.next()) |line| {
+        std.debug.print("{any}\n", .{@TypeOf(line)});
         var buffer: [2] u8 = line[0..2].*;
         for (line[2..]) |val| {
 
